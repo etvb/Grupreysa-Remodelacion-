@@ -9,9 +9,30 @@
 </head>
 <body>
     <main>
-        <img class="layer" src="" alt="logotipo grupreysa">
-        <h1 class="layer">EN REMODELACIÓN</h1>
+        <div class="ContainerMain-img">
+            <img class="layer" data-speed="2" src="./assents/img/logo grupreysa.png" alt="logotipo grupreysa">
+        </div>
+        <h1 class="layer" data-speed="4">EN REMODELACIÓN</h1>
     </main>
+
+    <script type="text/javascript">
+        //a toda la apgina ponemos a escuchar cuando el raton se mueve y lanzamos la funcion parallax
+            document.addEventListener("mousemove", parallax);
+            function parallax(e) {
+                //Seleccionamos todas las etiquetas con la clase layer 
+                this.querySelectorAll('.layer').forEach(layer => {
+                    //y por cada una aplicamos esto
+                    //obtenemos el valor que tenga data-speed
+                    const speed = layer.getAttribute('data-speed')
+                    //window.innerWidth = el ancho de la ventana
+                    const x = (window.innerWidth - e.pageX*speed)/100
+                    const y = (window.innerHeight - e.pageY*speed)/100
+    
+                    layer.style.transform = `translateX(${x}px) translateY(${y}px)`
+    
+                })
+            }
+        </script>
     
 </body>
 </html>
